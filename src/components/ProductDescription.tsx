@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import "../styles/product-description.scss";
 import { fetchProducts } from "@/services/api.service";
+import Image from "next/image";
 
 type ProductType = {
   id: number;
@@ -49,17 +50,23 @@ const ProductDescription = () => {
     <div className="product-description-page">
       <div className="product-details">
         <div className="product-image">
-          <img src={data.image} alt={data.title} />
+          <Image
+            src={data?.image}
+            alt={data?.title}
+            width={300}
+            height={300}
+            objectFit="cover"
+          />
         </div>
         <div className="product-info">
-          <h2 className="product-title">{data.title}</h2>
-          <h4>{data.category}</h4>
-          <p className="product-description">{data.description}</p>
+          <h2 className="product-title">{data?.title}</h2>
+          <h4>{data?.category}</h4>
+          <p className="product-description">{data?.description}</p>
           <div className="product-price-rating">
-            <p className="price">${data.price}</p>
+            <p className="price">${data?.price}</p>
             <div className="rating">
-              <span className="rate">{data.rating.rate}</span>
-              <span className="count">({data.rating.count} reviews)</span>
+              <span className="rate">{data?.rating?.rate}</span>
+              <span className="count">({data?.rating?.count} reviews)</span>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ const ProductList = ({ products }: HomePageProps) => {
     let filtered = products;
 
     if (categoryFilter) {
-      filtered = filtered.filter(
+      filtered = filtered?.filter(
         (product) => product.category === categoryFilter
       );
     }
@@ -61,7 +61,7 @@ const ProductList = ({ products }: HomePageProps) => {
         <div className="product-list">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product?.id} product={product} />
             ))
           ) : (
             <p className="no-products">No products found</p>
